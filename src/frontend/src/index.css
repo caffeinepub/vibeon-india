@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Dark neon palette – always dark */
+    --background: 0.1 0.022 265;
+    --foreground: 0.97 0.01 265;
+    --card: 0.14 0.025 265;
+    --card-foreground: 0.97 0.01 265;
+    --popover: 0.16 0.025 265;
+    --popover-foreground: 0.97 0.01 265;
+    --primary: 0.65 0.28 290;
+    --primary-foreground: 0.97 0.01 265;
+    --secondary: 0.18 0.03 265;
+    --secondary-foreground: 0.97 0.01 265;
+    --muted: 0.18 0.03 265;
+    --muted-foreground: 0.6 0.02 265;
+    --accent: 0.65 0.28 340;
+    --accent-foreground: 0.97 0.01 265;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.97 0.01 265 / 10%;
+    --input: 0.97 0.01 265 / 12%;
+    --ring: 0.65 0.28 290;
+    --chart-1: 0.65 0.28 290;
+    --chart-2: 0.65 0.28 340;
+    --chart-3: 0.82 0.18 195;
+    --chart-4: 0.7 0.2 230;
+    --chart-5: 0.75 0.22 310;
+    --sidebar: 0.12 0.022 265;
+    --sidebar-foreground: 0.97 0.01 265;
+    --sidebar-primary: 0.65 0.28 290;
+    --sidebar-primary-foreground: 0.97 0.01 265;
+    --sidebar-accent: 0.18 0.03 265;
+    --sidebar-accent-foreground: 0.97 0.01 265;
+    --sidebar-border: 0.97 0.01 265 / 10%;
+    --sidebar-ring: 0.65 0.28 290;
+
+    /* Neon custom vars */
+    --neon-purple: oklch(0.65 0.28 290);
+    --neon-pink: oklch(0.65 0.28 340);
+    --neon-cyan: oklch(0.82 0.18 195);
+    --neon-blue: oklch(0.65 0.22 255);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: "Anton", sans-serif;
+  }
+}
+
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered children */
+.reveal-stagger > *:nth-child(1) {
+  transition-delay: 0.0s;
+}
+.reveal-stagger > *:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.reveal-stagger > *:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.reveal-stagger > *:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+/* ===== NEON GLOW UTILITIES ===== */
+.neon-glow-purple {
+  box-shadow: 0 0 20px oklch(0.65 0.28 290 / 0.4), 0 0 60px
+    oklch(0.65 0.28 290 / 0.15);
+}
+
+.neon-glow-pink {
+  box-shadow: 0 0 20px oklch(0.65 0.28 340 / 0.4), 0 0 60px
+    oklch(0.65 0.28 340 / 0.15);
+}
+
+.neon-glow-cyan {
+  box-shadow: 0 0 20px oklch(0.82 0.18 195 / 0.4), 0 0 60px
+    oklch(0.82 0.18 195 / 0.15);
+}
+
+.neon-border-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.neon-border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--neon-purple),
+    var(--neon-pink),
+    var(--neon-cyan)
+  );
+  z-index: -1;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.neon-border-gradient:hover::before {
+  opacity: 1;
+}
+
+/* ===== PULSING CTA ===== */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px oklch(0.65 0.28 290 / 0.5), 0 0 40px
+      oklch(0.65 0.28 290 / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px oklch(0.65 0.28 290 / 0.8), 0 0 70px
+      oklch(0.65 0.28 290 / 0.35);
+  }
+}
+
+.pulse-glow {
+  animation: neon-pulse 2.5s ease-in-out infinite;
+}
+
+/* ===== NAV GLASS ===== */
+.glass-nav {
+  background: oklch(0.1 0.022 265 / 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid oklch(0.65 0.28 290 / 0.3);
+}
+
+/* ===== CARD HOVER LIFT ===== */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+}
+
+/* ===== HERO LIGHT LEAKS ===== */
+.hero-bg {
+  background: radial-gradient(
+      ellipse 60% 50% at 80% 50%,
+      oklch(0.35 0.15 255 / 0.3) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 40% 60% at 20% 80%,
+      oklch(0.4 0.2 290 / 0.25) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 60% 10%,
+      oklch(0.45 0.18 210 / 0.2) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      oklch(0.08 0.03 270) 0%,
+      oklch(0.06 0.015 260) 50%,
+      oklch(0.09 0.025 265) 100%
+    );
+}
+
+/* ===== SECTION LABEL ===== */
+.section-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--neon-purple);
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.1 0.022 265);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.65 0.28 290 / 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.65 0.28 290 / 0.8);
+}
