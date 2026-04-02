@@ -38,25 +38,25 @@ const PRODUCTIONS = [
   {
     id: 1,
     title: "TRACK 1",
-    videoId: "r0AQMMQs4-8",
+    videoId: "CnpBeYVJXGE",
     desc: "High-energy Punjabi track — created and produced by VibeOn India.",
   },
   {
     id: 2,
     title: "TRACK 2",
-    videoId: "tSlsvgiA1F8",
+    videoId: "kHCJAXJ-wag",
     desc: "A melodic original from our YouTube channel — pure emotion in every beat.",
   },
   {
     id: 3,
     title: "TRACK 3",
-    videoId: "s7jMogxMn90",
+    videoId: "uNF-HdIiIdU",
     desc: "Electronic fusion with an Indian touch — one of our personal favourites.",
   },
   {
     id: 4,
     title: "TRACK 4",
-    videoId: "sfKcmPBjgAE",
+    videoId: "i8aT0L8s1FE",
     desc: "Soulful original composition — made with love, straight from the heart.",
   },
 ];
