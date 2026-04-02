@@ -17,7 +17,7 @@ import { toast } from "sonner";
 import { useSubmitContact } from "./hooks/useQueries";
 import { useScrollReveal } from "./hooks/useScrollReveal";
 
-const YT_CHANNEL = "https://www.youtube.com/channel/UCRykKSp62IWGPM8eYxz61pw";
+const YT_CHANNEL = "https://www.youtube.com/@VibeOnIndiaStudio";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
